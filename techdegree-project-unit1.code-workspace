@@ -1,16 +1,9 @@
 {
 	"folders": [
 		{
-			"path": "."
-		},
-		{
-			"path": "."
-		},
-		{
-			"path": "."
-		},
-		{
+			"name": "techdegree-project-unit1",
 			"path": "."
 		}
-	]
+	],
+	"settings": {}
 }
