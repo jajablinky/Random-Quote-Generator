@@ -11,11 +11,13 @@ GEOFF MILLAR
 const quotes = [
   {
     quote: "I don't think people are going to talk in the future. They're going to communicate through eye contact, body language, emojis, signs.",
-    source: 'Kanye West'
+    source: 'Kanye West',
+    known_for: 'Musician'
   },
   {
     quote: "If I'm traveling, I'll pack socks in my bag - really cute furry ones.",
-    source: 'Nicki Minaj'
+    source: 'Nicki Minaj',
+    known_for: 'Musician'
   },
   {
     quote: "Focused, hard work is the real key to success. Keep your eyes on the goal, and just keep taking the next step towards completing it. If you aren't sure which way to do something, do it both ways and see which works better.",
@@ -45,11 +47,13 @@ const quotes = [
   },
   {
     quote: "I feel like, when people realize that they are the only person they need to impress, everybody's life will be a lot smoother.",
-    source: 'Megan Thee Stallion'
+    source: 'Megan Thee Stallion',
+    known_for: 'Musician'
   },
   {
     quote: "I think I'm cool. That's all that matters.",
-    source: 'Tyler, The Creator'
+    source: 'Tyler, The Creator',
+    known_for: 'Musician'
   },
   {
     quote: "You can be gorgeous at thirty, charming at forty, and irresistible for the rest of your life.",
@@ -77,9 +81,9 @@ const getRandomQuote = () => {
   return quotes[randomNumber];
 }
 
-
 /***
  * `printQuote` function
+ * final print of the random quote.
 ***/
 
 const printQuote = () => {
@@ -88,15 +92,33 @@ const printQuote = () => {
 
   //Conditional if statement in cases of citation or year being defined in retrieved quote.
     if ( randomQuote.citation ) {
-      html += `<span class="source"> ${randomQuote.citation} </span>`;
+      html += `<span class="citation"> ${randomQuote.citation} </span>`;
     } 
     if ( randomQuote.year ) {
-      html += `<span class="source"> ${randomQuote.year} </span>`;
+      html += `<span class="year"> ${randomQuote.year} </span>`;
+    }
+    if ( randomQuote.known_for ) {
+      html += `<span class="citation"> ${randomQuote.known_for} </span>`;
     }
     `</p>`
 
+    //`randColor` function
+    // used to change color of background everytime quote generated
+    const randColor = () =>  {
+      return "#" + Math.floor(Math.random()*16777215).toString(16).padStart(6, '0').toUpperCase();
+    }
+  document.body.style.backgroundColor = randColor();
+
+  // committing quote to html
   document.getElementById('quote-box').innerHTML = html; 
 }
+
+/***
+ * `setInterval` function
+ * final print of the random quote.
+***/
+
+setInterval(printQuote, 10000);
 
 /***
  * click event listener for the print quote button
